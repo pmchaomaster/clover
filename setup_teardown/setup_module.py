@@ -2,7 +2,6 @@ import pytest
 import os
 from selenium import webdriver
 
-
 @pytest.fixture(scope="class")
 def setup(request):
     base_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current file
