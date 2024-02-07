@@ -6,15 +6,17 @@ from selenium.webdriver.common.by import By
 from data.testdata import SearchEngines   # Import the SearchEngines class
 from utilities.logger import LogGen  # Import the LogGen class
 from setup_teardown.setup_module import setup
+from browser_config import get_browser_driver
 
 # Initialize logger
 logger = LogGen.loggen()
+BROWSER_NAME = 'chrome'
 
 
 @pytest.fixture(scope="class")
-def setup(request):
+def setup(request,BROWSER_NAME):
     # Initialize the WebDriver
-    driver = webdriver.Chrome(executable_path="path/to/your/chromedriver")
+    driver = get_browser_driver(BROWSER_NAME)
     driver.implicitly_wait(10)
     request.cls.driver = driver
     logger.info("Webdriver Initialized")
